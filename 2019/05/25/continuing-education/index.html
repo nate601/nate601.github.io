@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<title>Continuing Education - nate601&#39;s blag</title>
+<meta property="og:title" content="Continuing Education - nate601&#39;s blag">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/aboutme/">About Me</a></li>
+    
+    <li><a href="https://github.com/nate601">GitHub</a></li>
+    
+    <li><a href="https://linktr.ee/nate601">LinkTree</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">Continuing Education</h1>
+
+    
+    <span class="article-date">2019-05-25</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>The intent of this document is to provide myself with a way of tracking the status of my progress for me Continuing Education Units (CEs) for the rest of the month of May. Due to mental health issues I was unable to complete the majority of my requirement before now. I must now cram as many CEs into the remaining time in order to maintain my Pharmacy Technician Certification.</p>
+<p>It is currently 2019/05/25. I must have 20 hours of CEs by the end fo this month. I hope to have a 2 day buffer in between the time that my CEs are completed and by the time that my recertification deadline is. This buffer will account for any issues that might arise during my recertification.</p>
+<pre class="r"><code>startDay                          &lt;- 24
+daysRemaining                     &lt;- 31 - startDay
+dayBuffer                         &lt;- 2
+numberOfCEsCompleted              &lt;- 0
+minimumNumberOfCEsRequired        &lt;- 20
+MinimumAmountOfCEsCompletedPerDay &lt;- ceiling((minimumNumberOfCEsRequired - numberOfCEsCompleted) / (daysRemaining - dayBuffer))</code></pre>
+<p>The following array will be used to track my progress throughout the remaining 5 days. I must complete 4 hours each day. The values within the array will be changed as the day changes.</p>
+<pre class="r"><code>ActualCEsCompletedPerDay &lt;- c(0, 0, 0, 0, 0)
+
+dataFrame &lt;- data.frame(
+  Date = paste(&quot;May &quot;,c(25:(31-2)),&quot;th&quot;, sep=&quot;&quot;),
+  Hours = ActualCEsCompletedPerDay,
+  CumulativeHours = cumsum(ActualCEsCompletedPerDay)
+)
+kable(dataFrame, caption=&quot;Progress&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>Progress</caption>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Hours</th>
+<th align="right">CumulativeHours</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">May 25th</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">May 26th</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">May 27th</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">May 28th</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">May 29th</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>The following graph is useful in visualizing the number of hours completed. In theory, having a visualization of the amount of work that I have completed will allow me to stay motivated more easily. The X axis represents the days remaining until the deadline (minus the buffer period). The Y axis represents the number of Hours completed. The bar graph shows the number of hours completed each day, while the line graph shows the cumulative total of the number of hours completed. The horizontal line at y=4 represents the minimum amount of CEs that I must complete each day. If the bar graph shows a number lower than this value, then there is a deficit in my performance. The horizontal line at y=20 represents the total number of CEs that must be completed by the deadline. If the line graph shows a number lower than this value by the final day, then my performance is lacking and remedial CEs must be performed during the buffer days. Ideally this will not occur.</p>
+<pre class="r"><code>ggplot(dataFrame, aes(x=Date, y=Hours)) + 
+  ggtitle(&quot;Continuing Education Hour Management&quot;) +
+  geom_bar(stat=&quot;identity&quot;) + 
+  coord_cartesian(ylim=c(0,25)) +
+  geom_hline(yintercept=20) + 
+  geom_hline(yintercept=MinimumAmountOfCEsCompletedPerDay, linetype=&quot;dashed&quot;, color=&quot;red&quot;) +
+  geom_line(aes(x=Date, y=CumulativeHours, group=1), color=&quot;green&quot;, size=2)</code></pre>
+<p><img src="/post/2019-05-25-continuing-education_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-140778365-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+
