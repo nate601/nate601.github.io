@@ -84,7 +84,7 @@ numberOfCEsCompleted              &lt;- 0
 minimumNumberOfCEsRequired        &lt;- 20
 MinimumAmountOfCEsCompletedPerDay &lt;- ceiling((minimumNumberOfCEsRequired - numberOfCEsCompleted) / (daysRemaining - dayBuffer))</code></pre>
 <p>The following array will be used to track my progress throughout the remaining 5 days. I must complete 4 hours each day. The values within the array will be changed as the day changes.</p>
-<pre class="r"><code>ActualCEsCompletedPerDay &lt;- c(0, 0, 0, 0, 0)
+<pre class="r"><code>ActualCEsCompletedPerDay &lt;- c(0, 10.25, 0, 0, 0)
 
 dataFrame &lt;- data.frame(
   Date = paste(&quot;May &quot;,c(25:(31-2)),&quot;th&quot;, sep=&quot;&quot;),
@@ -104,28 +104,28 @@ kable(dataFrame, caption=&quot;Progress&quot;)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">May 25th</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
 </tr>
 <tr class="even">
 <td align="left">May 26th</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">10.25</td>
+<td align="right">10.25</td>
 </tr>
 <tr class="odd">
 <td align="left">May 27th</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">10.25</td>
 </tr>
 <tr class="even">
 <td align="left">May 28th</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">10.25</td>
 </tr>
 <tr class="odd">
 <td align="left">May 29th</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">10.25</td>
 </tr>
 </tbody>
 </table>
