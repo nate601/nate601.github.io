@@ -84,7 +84,7 @@ numberOfCEsCompleted              &lt;- 0
 minimumNumberOfCEsRequired        &lt;- 20
 MinimumAmountOfCEsCompletedPerDay &lt;- ceiling((minimumNumberOfCEsRequired - numberOfCEsCompleted) / (daysRemaining - dayBuffer))</code></pre>
 <p>The following array will be used to track my progress throughout the remaining 5 days. I must complete 4 hours each day. The values within the array will be changed as the day changes.</p>
-<pre class="r"><code>ActualCEsCompletedPerDay &lt;- c(2.5, 11.75, 0, 0, 0)
+<pre class="r"><code>ActualCEsCompletedPerDay &lt;- c(2.5, 11.75, 6.0, 0, 0)
 
 dataFrame &lt;- data.frame(
   Date = paste(&quot;May &quot;,c(25:(31-2)),&quot;th&quot;, sep=&quot;&quot;),
@@ -114,18 +114,18 @@ kable(dataFrame, caption=&quot;Progress&quot;)</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">May 27th</td>
-<td align="right">0.00</td>
-<td align="right">14.25</td>
+<td align="right">6.00</td>
+<td align="right">20.25</td>
 </tr>
 <tr class="even">
 <td align="left">May 28th</td>
 <td align="right">0.00</td>
-<td align="right">14.25</td>
+<td align="right">20.25</td>
 </tr>
 <tr class="odd">
 <td align="left">May 29th</td>
 <td align="right">0.00</td>
-<td align="right">14.25</td>
+<td align="right">20.25</td>
 </tr>
 </tbody>
 </table>
@@ -138,6 +138,7 @@ kable(dataFrame, caption=&quot;Progress&quot;)</code></pre>
   geom_hline(yintercept=MinimumAmountOfCEsCompletedPerDay, linetype=&quot;dashed&quot;, color=&quot;red&quot;) +
   geom_line(aes(x=Date, y=CumulativeHours, group=1), color=&quot;green&quot;, size=2)</code></pre>
 <p><img src="/post/2019-05-25-continuing-education_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>As of 2019/05/19 I have completed all of my required CEs and will be submitting my application for renewal shortly.</p>
 
     </div>
   </article>
