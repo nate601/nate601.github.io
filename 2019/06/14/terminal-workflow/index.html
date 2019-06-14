@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<title>Terminal Workflow - nate601&#39;s blag</title>
+<meta property="og:title" content="Terminal Workflow - nate601&#39;s blag">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/aboutme/">About Me</a></li>
+    
+    <li><a href="https://github.com/nate601">GitHub</a></li>
+    
+    <li><a href="https://linktr.ee/nate601">LinkTree</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">Terminal Workflow</h1>
+
+    
+    <span class="article-date">2019-06-14</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>Recently I have made several changes to my terminal workflow, and I feel that it would be useful to document them so that I may analyze any changes that occur in the future.</p>
+<div id="windows-environment" class="section level1">
+<h1>Windows Environment</h1>
+<p>I perform most of my activities within a windows environment. I use <a href="https://cmder.net/">Cmder</a> as my terminal interface. I have several utilities placed within the Bin folder, allowing access to them without cluttering my PATH. I have the Git for Windows version which gives access to what is essentially the CoreUtils package. My keyboard is equipped with 18 macro keys that can switch depending on the currently running application. I use the top 6 of these macro keys to switch to <a href="https://putty.org/">Putty</a> terminal sessions, each connecting to a different server or user on a machine. For example, my G1 key will launch a Putty instance with the macVM session. Cmder allows for software such as Putty to be embedded within itself, leading to a fairly seamless transition between a local console and a remote console. Locally I will use the windows command line as a shell, as with the CoreUtils I don’t see the need to install another shell.</p>
+<p>To edit sundry files, I will use <a href="https://code.visualstudio.com/">VSCode</a>, equipped with myriad extensions to help with autocompletion and other command utilities. I like VSCode’s ability to access the console from within it, as it allows for fast reloading and recompiling. For a more heavy-duty development environment, I will use <a href="https://visualstudio.microsoft.com/vs/">Visual Studio 2019</a> equipped with JetBrains’s <a href="https://www.jetbrains.com/resharper/">Resharper</a>. Csharp is the language that I am most comfortable programming in, and the combination of VSCode and Visual Studio 2019 allow me to use it for smaller scripting needs as well.</p>
+</div>
+<div id="linux-development-server-deployment" class="section level1">
+<h1>Linux Development / Server Deployment</h1>
+<p>My Csharp affinity has continued with my Linux adventures. I will typically build an application as a Docker package on Windows and deploy this package onto a docker instance on a VPS. I use <a href="https://www.digitalocean.com/">DigitalOcean</a> for my VPS needs, as well as <a href="https://www.namecheap.com/">NameCheap</a> for domain names.</p>
+<p>For smaller applications I will use an extension within VSCode that allows me to connect to a remote SSH server and use it as a workspace folder. This allows me to use a development environment that I am familiar with. I prefer to use these Server deployments as minimally as possible, as the dotNetCore allows me to write code that will run in multiple environements.</p>
+<p>I will typically host using an Ubuntu VPS, simply because it is the one autoselected by DigitalOcean on a new droplet spinup. I have no affinity with any linux distribution, this is simply the most convinient to create. As stated previously, because my applications will be run within a docker instance, it does not matter what platform I use to host it.</p>
+</div>
+<div id="macos-environment" class="section level1">
+<h1>MacOS Environment</h1>
+<p>Recently I have had the need to develop within a MacOS environment. Originally I planned on using an old 2011 mac that was laying around for this purpose, however this device could not be upgraded to the latest version of OSX. Instead, I have turned that machine into an HTPC and have created a virtual machine on my computer to be used as a development environment. Surprisingly, this works extremely well. By allocating only four gigabytes of ram to the virtual machine, I am able to run many applications without any noticible lag-time at all. I will typically close the visualization of the virtual machine in <a href="https://www.vmware.com/">VMWare</a> and either SSH into the machine or VNC into the machine. For some reason, using VNC to connect to the machine has better <em>apparent</em> performance that simply using the built in display. When I connect with SSH I use the <a href="https://fishshell.com/">Fish shell</a>. Although it is not POSIX compliant, I have found that it is quite comfortable to use.</p>
+<p>For an editor I have begun using <a href="https://neovim.io/">Neovim</a>. When I am doing iOS or MacOS development, it is preferable to edit my files on the Mac machine itself rather than connecting. Because of this fact, and in consideration of the lag time involved, I decided that I needed to use a command line editor. I chose Neovim because it is feature-filled, without being overbearing like emacs. I use several language completion servers with Neovim to have autocomplete comparable to VSCode.</p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-140778365-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+

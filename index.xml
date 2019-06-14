@@ -6,10 +6,20 @@
     <description>Recent content on nate601&#39;s blag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Terminal Workflow</title>
+      <link>/2019/06/14/terminal-workflow/</link>
+      <pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/06/14/terminal-workflow/</guid>
+      <description>Recently I have made several changes to my terminal workflow, and I feel that it would be useful to document them so that I may analyze any changes that occur in the future.
+Windows EnvironmentI perform most of my activities within a windows environment. I use Cmder as my terminal interface. I have several utilities placed within the Bin folder, allowing access to them without cluttering my PATH. I have the Git for Windows version which gives access to what is essentially the CoreUtils package.</description>
+    </item>
     
     <item>
       <title>Continuing Education</title>
