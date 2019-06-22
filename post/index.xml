@@ -6,10 +6,19 @@
     <description>Recent content in Posts on nate601&#39;s blag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Post Mortem: Rapere Librum</title>
+      <link>/2019/06/22/post-mortem-rapere-librum/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/06/22/post-mortem-rapere-librum/</guid>
+      <description>Mobile development is something that I have attempted once or twice, but I have yet to create anything that I was happy with. Development for iOS devices requires a computer running MacOSX, which I have not had in the past. The only computer that I had access to for development could not be updated past OSX High Sierra due to its age, and OSX Mojave is required to install the lastest version of xcode.</description>
+    </item>
     
     <item>
       <title>Terminal Workflow</title>
