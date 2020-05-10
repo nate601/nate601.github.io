@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on nate601&#39;s blag</title>
@@ -27,7 +27,7 @@
       
       <guid>/2019/06/14/terminal-workflow/</guid>
       <description>Recently I have made several changes to my terminal workflow, and I feel that it would be useful to document them so that I may analyze any changes that occur in the future.
-Windows EnvironmentI perform most of my activities within a windows environment. I use Cmder as my terminal interface. I have several utilities placed within the Bin folder, allowing access to them without cluttering my PATH. I have the Git for Windows version which gives access to what is essentially the CoreUtils package.</description>
+Windows Environment I perform most of my activities within a windows environment. I use Cmder as my terminal interface. I have several utilities placed within the Bin folder, allowing access to them without cluttering my PATH. I have the Git for Windows version which gives access to what is essentially the CoreUtils package.</description>
     </item>
     
     <item>
@@ -36,8 +36,8 @@ Windows EnvironmentI perform most of my activities within a windows environment
       <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/05/25/continuing-education/</guid>
-      <description>The intent of this document is to provide myself with a way of tracking the status of my progress for me Continuing Education Units (CEs) for the rest of the month of May.
-It is currently 2019/05/25. I must have 20 hours of CEs by the end of this month. I hope to have a 2 day buffer in between the time that my CEs are completed and by the time that my recertification deadline is.</description>
+      <description>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE, ## logical.return = TRUE, : there is no package called &amp;#39;plyr&amp;#39; The intent of this document is to provide myself with a way of tracking the status of my progress for me Continuing Education Units (CEs) for the rest of the month of May.
+It is currently 2019/05/25. I must have 20 hours of CEs by the end of this month.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ It is currently 2019/05/25. I must have 20 hours of CEs by the end of this month
       <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/04/19/weekly-game-jam-93/</guid>
-      <description>Day 1:Day one of WGJ-93 is going fairly well. The theme selected was “fishing.” The game that I have decided to create is a simple non-tactics based game where the player controls a fish hook. This fish hook must dodge things such as jellyfish and driftwood, while still capturing fish. Fish capturing is handled by mousing over the fish for a certain amount of time. The amount of time is determined by the size of the fish (i.</description>
+      <description>Day 1: Day one of WGJ-93 is going fairly well. The theme selected was “fishing.” The game that I have decided to create is a simple non-tactics based game where the player controls a fish hook. This fish hook must dodge things such as jellyfish and driftwood, while still capturing fish. Fish capturing is handled by mousing over the fish for a certain amount of time. The amount of time is determined by the size of the fish (i.</description>
     </item>
     
   </channel>
