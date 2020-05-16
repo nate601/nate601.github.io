@@ -6,10 +6,20 @@
     <description>Recent content in Posts on nate601&#39;s blag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Updated Workflow</title>
+      <link>/2020/05/15/updated-workflow/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/15/updated-workflow/</guid>
+      <description>My development environment has once again changed dramatically1, and I would like to record these changes and compare them to other years.
+Operating System and Window Managers For most of my development activities I use a Debian environment. I use a server hosted on DigitalOcean, and SSH into it so that my development environment is consistent no matter which device I am using. Originally, I tried using a window manager such as i3 and dwm, but I have found that, due to speed concerns, using SSH with either Vim splits or tmux panes is preferable.</description>
+    </item>
     
     <item>
       <title>Post Mortem: Rapere Librum</title>
