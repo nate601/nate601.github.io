@@ -33,7 +33,7 @@ Operating System and Window Managers For most of my development activities I use
       
       <guid>/2019/06/14/terminal-workflow/</guid>
       <description>Recently I have made several changes to my terminal workflow, and I feel that it would be useful to document them so that I may analyze any changes that occur in the future.
-Windows Environment I perform most of my activities within a windows environment. I use Cmder as my terminal interface. I have several utilities placed within the Bin folder, allowing access to them without cluttering my PATH. I have the Git for Windows version which gives access to what is essentially the CoreUtils package.</description>
+Windows Environment I perform most of my activities within a windows environment. I use Cmder as my terminal interface. I have several utilities placed within the Bin folder, allowing access to them without cluttering my PATH.</description>
     </item>
     
     <item>
