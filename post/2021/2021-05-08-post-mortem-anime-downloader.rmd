@@ -1,0 +1,10 @@
+---
+title: 'Post Mortem: Anime Downloader'
+author: 'Nathan Button'
+date: '2021-05-08'
+slug: 'post-mortem-anime-downloader'
+categories: []
+tags: []
+---
+
+Before I signed up for a streaming membership with Funimation and Crunchyroll, I needed to seek alternate ways to download anime.  
