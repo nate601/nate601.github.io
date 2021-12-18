@@ -8,6 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 15 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Contact Me</title>
+      <link>/contact/</link>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>   Blog (You are Here)
+Email
+Reddit
+Snapchat
+Instagram
+Twitter
+ </description>
+    </item>
+    
+    <item>
       <title>Updated Workflow</title>
       <link>/2020/05/15/updated-workflow/</link>
       <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
@@ -53,7 +68,7 @@ It is currently 2019/05/25. I must have 20 hours of CEs by the end of this month
       
       <guid>/aboutme/</guid>
       <description>Introduction Name: Nathan Button
-Contact Information: LinkTree
+Contact Information: Contact Me
 Pronouns: He / Him
 Age: 22
 Drink/Smoke: No
