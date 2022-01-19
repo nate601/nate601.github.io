@@ -92,6 +92,7 @@ Another thing which I dislike about rust is the necessity of third-party crates 
 <h2>Dune-Head-App</h2>
 <p>This app pulls the top searches from the google trends website. This website lists the top trends within a certain demographic, as well as images and news articles about the trends. I scrape the RSS feed of the US trending topics, and I parse it using the
 serde_xml_rs library. I then choose a random topic from these topics, and send a HTTP POST request to a Discord webhook. The webhook is specified in an environment variable, so that it could be easily changed during testing and it can be kept separate from the code. I have this bot running on my home computer in a cron job at 9 am every morning in order to keep my discord server up to date on current events. Truly there is no better way than this.</p>
+<p>Here is a link to the code for <a href="https://github.com/nate601/dune_head_app">perusing</a>.</p>
 </div>
 
     </div>
