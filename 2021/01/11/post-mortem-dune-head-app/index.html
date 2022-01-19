@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+<title>Post Mortem: Dune Head App - nate601&#39;s blag</title>
+<meta property="og:title" content="Post Mortem: Dune Head App - nate601&#39;s blag">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/aboutme/">About Me</a></li>
+    
+    <li><a href="/contact/">Contact</a></li>
+    
+    <li><a href="https://github.com/nate601">GitHub</a></li>
+    
+    <li><a href="https://linktr.ee/nate601">LinkTree</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Post Mortem: Dune Head App</h1>
+
+    
+    <span class="article-date">2021-01-11</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div class="figure">
+<img src="http://xbb.home.nate601.me/FABe9/kILOFArE82.png/raw" height="300" alt="" />
+<p class="caption">Dune this, dune that. I need some head</p>
+</div>
+<div class="figure">
+<img src="http://xbb.home.nate601.me/FABe9/Fibehito37.png/raw" height="150" alt="" />
+<p class="caption">An example of the bot in action</p>
+</div>
+<p>I firmly believe this project is the brainchild of my sleepless nights and inappropriate internet memes. The dune-head-app project is based on an image macro that I found, disparaging the relatively recent movie release of Dune.</p>
+<div id="thoughts-on-rust" class="section level2">
+<h2>Thoughts on rust</h2>
+<p>This program was my first attempt at using the rust programming language. There are many things that I like about rust, such as the portability and lack of a need for garbage collection. There was a bit of a learning curve in the
+syntax and my way of thinking. Rust’s concept of variable ownership (while it gives it it’s powerful memory promises) was confusing to me when I first approached it. In addition, I am still learning the difference between “&amp;str”, “String” and “&amp;String”.
+Another thing which I dislike about rust is the necessity of third-party crates for some features that I am used to having in the dotnet framework, such as serialization and the like.</p>
+</div>
+<div id="dune-head-app" class="section level2">
+<h2>Dune-Head-App</h2>
+<p>This app pulls the top searches from the google trends website. This website lists the top trends within a certain demographic, as well as images and news articles about the trends. I scrape the RSS feed of the US trending topics, and I parse it using the
+serde_xml_rs library. I then choose a random topic from these topics, and send a HTTP POST request to a Discord webhook. The webhook is specified in an environment variable, so that it could be easily changed during testing and it can be kept separate from the code. I have this bot running on my home computer in a cron job at 9 am every morning in order to keep my discord server up to date on current events. Truly there is no better way than this.</p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-140778365-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+
