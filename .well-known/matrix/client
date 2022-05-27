@@ -1,18 +1,21 @@
 {
-	"m.homeserver": {
-		"base_url": "https://matrix.nate601.me"
-	}
-,
-	"m.identity_server": {
-		"base_url": "https://matrix.nate601.me"
-	}
-	,
-	"io.element.e2ee": {
-		"default": true,
-		"secure_backup_required": false,
-		"secure_backup_setup_methods": []
-	},
-	"im.vector.riot.e2ee": {
-		"default": true
-	}
+    "im.vector.riot.e2ee": {
+        "default": true
+    },
+    "io.element.e2ee": {
+        "default": true,
+        "secure_backup_required": false,
+        "secure_backup_setup_methods": []
+    },
+    "m.homeserver": {
+        "base_url": "https://matrix.nate601.me"
+    },
+    "m.integrations": {
+        "managers": [
+            {
+                "api_url": "https://dimension.nate601.me/api/v1/scalar",
+                "ui_url": "https://dimension.nate601.me/element"
+            }
+        ]
+    }
 }
