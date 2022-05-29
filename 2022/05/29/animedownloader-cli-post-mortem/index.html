@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+<title>Post Mortem: Anime Downloader CLI - nate601&#39;s blag</title>
+<meta property="og:title" content="Post Mortem: Anime Downloader CLI - nate601&#39;s blag">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/aboutme/">About Me</a></li>
+    
+    <li><a href="/contact/">Contact</a></li>
+    
+    <li><a href="https://github.com/nate601">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">Post Mortem: Anime Downloader CLI</h1>
+
+    
+    <span class="article-date">2022-05-29</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>To this day if I had to name one of my most successful projects it would be my Anime downloader. At the time of it’s creation, I did not have a subscription to Funimation or Crunchyroll, so I was streaming anime from various ad and virus ridden websites. If there was a series that I was particularly interested in then I would torrent the whole season and keep it on my media drive (which is a topic for another post.) I discovered that the group known as HorribleSubs had an IRC channel where direct downloads can be sent to you. I wrote a software to automate the searching of the online database for the file of the episode of the series I would look for. This project is the first one that has been used by other people as a useful utility, and is the first project which I have worked on with other people. Grand assisted in the development with several pull requests. I intend to break down the program flow for future interpretation in this post.</p>
+<p>##Program Flow</p>
+<p>The program starts by prompting the user for the title of the anime. The program then searches the online HorribleSubs database for the Packlist of the anime. Any English or Japanese title will be returned by the HorribleSubs online search. The website returns a table containing the information of the quality, and which bots would have the copy of the file. I parse this information and present it to the user. Allow me to explain: inside the IRC channel there would be several bots who would host the files, mostly for redundancy and speed concerns I would imagine. My program would hide the results from the user if the bot was not online in the IRC channel. It would also note if different episodes were available in certain qualities. Originally I had planned for the program to source from multiple different groups, but the HorribleSubs system worked for mostly any anime that I desired. Nonetheless, after the user picked the choice of Anime, they would be prompted with the choices of downloading either all, some, or one episode of the show. My typical workflow would be to download all of the show so that I could binge them all at the same time later. A series of different substitution regex would then change the title of the file so that I could easily browse the folder structure for the show I was looking for.</p>
+</div>
+<div id="retrospective" class="section level2">
+<h2>Retrospective</h2>
+<p>Looking back, if I were to write this again I would try to work concurrent downloading of the episodes into the program. The IRC library that I used could only handle the one download at a time, but I believe that the protocol allows for multiple simultaneous connections. Currently the program no longer functions as the HorribleSubs group know longer hosts the episodes on the IRC, thus the program no longer has a way to source the episodes. I believe that I read that the cause of the group closing their doors was related to the COVID pandemic, but I am unsure. As I now have a subscription to both Crunchyroll and Funimation I have no desire to find a new sources for the downloader. It is essentially a piece of my programming history: a wonderful reminder of what projects I can complete when motivated. Going forward, I would like to use the knowledge I gained here to create a book downloader, as the #bookz channels on certain IRC servers fuinction in a similar way, and a friendly interface to that is slightly lacking. If I were to do this I would love to write it in Rust, and write the IRC protocol myself as a challenge!</p>
+<p><a href="https://github.com/nate601/AnimeDownloaderCLI">The code for the original AnimeDownloaderCLI is available on github.</a></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-140778365-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+

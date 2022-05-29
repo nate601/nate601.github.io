@@ -6,7 +6,16 @@
     <description>Recent content on nate601&#39;s blag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Post Mortem: Anime Downloader CLI</title>
+      <link>/2022/05/29/animedownloader-cli-post-mortem/</link>
+      <pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/05/29/animedownloader-cli-post-mortem/</guid>
+      <description>Summary To this day if I had to name one of my most successful projects it would be my Anime downloader. At the time of it’s creation, I did not have a subscription to Funimation or Crunchyroll, so I was streaming anime from various ad and virus ridden websites. If there was a series that I was particularly interested in then I would torrent the whole season and keep it on my media drive (which is a topic for another post.</description>
+    </item>
+    
     <item>
       <title>Post Mortem: Dune Head App</title>
       <link>/2022/01/11/post-mortem-dune-head-app/</link>
