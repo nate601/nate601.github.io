@@ -6,7 +6,17 @@
     <description>Recent content on nate601&#39;s blag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Post Mortem: Rs-Book-Downloader</title>
+      <link>/2022/06/30/post-mortem-rs-book-downloader-cli/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/06/30/post-mortem-rs-book-downloader-cli/</guid>
+      <description>My Rs-Book-Downloader project was another in a series of programs I have written to help me “acquire” materials in a morally gray way.
+It’s similar to my rapere librum project from a few years ago, but this program sources the books in a different way. Unfortunately, although this project is complete and works in theory, in practice… you might just have an easier time googling for the book. This is due to the time delay that is caused by connecting to the irc server and having them search for the book.</description>
+    </item>
+    
     <item>
       <title>Post Mortem: Anime Downloader CLI</title>
       <link>/2022/05/29/animedownloader-cli-post-mortem/</link>
