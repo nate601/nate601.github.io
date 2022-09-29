@@ -6,7 +6,18 @@
     <description>Recent content on nate601&#39;s blag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Post Mortem: Chip-N8</title>
+      <link>/2022/07/23/post-mortem-chip-eight/</link>
+      <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/07/23/post-mortem-chip-eight/</guid>
+      <description>This is the third entry in the monthly programming and blogging challenge that I have created for myself. This month I decided that I would create a chip-8 emulator.
+Chip-8 and Project Scope To quote Cowgod’s technical reference:
+ Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. The COSMAC VIP, DREAM 6800, and ETI 660 computers are a few examples.</description>
+    </item>
+    
     <item>
       <title>Post Mortem: Rs-Book-Downloader</title>
       <link>/2022/06/30/post-mortem-rs-book-downloader-cli/</link>

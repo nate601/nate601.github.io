@@ -4,16 +4,21 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2022-06-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2022/06/30/post-mortem-rs-book-downloader-cli/</loc>
-    <lastmod>2022-06-30T00:00:00+00:00</lastmod>
+    <loc>/2022/07/23/post-mortem-chip-eight/</loc>
+    <lastmod>2022-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
+    <lastmod>2022-07-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2022/06/30/post-mortem-rs-book-downloader-cli/</loc>
     <lastmod>2022-06-30T00:00:00+00:00</lastmod>
   </url>
   
