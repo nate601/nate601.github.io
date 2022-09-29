@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+<title>Post Mortem: Chip-N8 - nate601&#39;s blag</title>
+<meta property="og:title" content="Post Mortem: Chip-N8 - nate601&#39;s blag">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/aboutme/">About Me</a></li>
+    
+    <li><a href="/contact/">Contact</a></li>
+    
+    <li><a href="https://github.com/nate601">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">Post Mortem: Chip-N8</h1>
+
+    
+    <span class="article-date">2022-07-23</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>This is the third entry in the monthly programming and blogging challenge that I have created for myself.
+This month I decided that I would create a chip-8 emulator.</p>
+<div id="chip-8-and-project-scope" class="section level3">
+<h3>Chip-8 and Project Scope</h3>
+<p>To quote Cowgod’s technical reference:</p>
+<blockquote>
+<p>Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. The COSMAC VIP, DREAM 6800, and ETI 660 computers are a few examples. These computers typically were designed to use a television as a display, had between 1 and 4K of RAM, and used a 16-key hexadecimal keypad for input. The interpreter took up only 512 bytes of memory, and programs, which were entered into the computer in hexadecimal, were even smaller. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</blockquote>
+<p>I created a chip-8 emulator (not entirely to spec) to play the space invaders rom by David Winter.
+Since I was working extra this month at the district office, I wanted to have a more abbreviated project, so I implemented the emulator within a couple of weekends so that I could be free to relax during the week (this did not happen due to work stress unfortunately.)
+I did successfully create the chip-8 emulator!
+This emulator does play the space invaders rom, but there are several operations that I did not implement.
+For example, the random number generator always returns the number four, and the usual audio cues from the game are silent.</p>
+</div>
+<div id="display-implementation" class="section level3">
+<h3>Display Implementation</h3>
+<p>The chip-8 uses a 64x32 1-bit display, and it is represented in code as an array of bytes.
+Originally, I was going to use the different bits of the byte to represent fading of the pixel, but I decided that it looked stupid, so I removed that.
+When a pixel is written to the display, it is written into a separate “buffer” array before being copied into the actual display.
+This allows the changes to take place on operation boundaries, instead of occurring in the middle of an operation.
+The program loop clears the screen when the buffer is “tainted” and then moves the data from the buffer to the display array.
+Then the display array is mapped to either a white or black emoji depending on the value.
+The mapping is then printed to the screen.
+This was the first time that I had implemented my own Display trait for a struct in Rust, and I find it relatively convoluted compared to overriding virtual functions in C#.
+Coming from a language that is so much more entwined with OOP might be affected the speed at which I learn Rust.</p>
+</div>
+<div id="operations-instructions-opcodes-and-operationcomponents-oh-my" class="section level3">
+<h3>Operations, Instructions, OpCodes, and OperationComponents: Oh my!</h3>
+<p>To parse each Instruction from the binary rom file, I keep a Vec of valid operations. These are defined as being comprised of an array of OperationComponents and an OpCode.
+OpCode is simply an enum listing the different operations (this gives me a way to reference them at compile time).
+OperationComponent is an enum that can have several types representing the bytes in the instruction.
+An OperationComponent is either a Literal (meaning that it represents a hexadecimal nibble), or it can be a variable number of nibbles (up to 3).
+As chip-8 instructions are all two bytes long, there can be no more than four operation components per each Operation.
+An Instruction is the actual instruction that was read from the rom.
+The instruction can then be matched with an Operation.
+The instruction also provides methods that can be used to read the variable nibbles of the instruction.</p>
+<div id="matching-an-instruction-to-an-opcode" class="section level4">
+<h4>Matching an Instruction to an OpCode</h4>
+<p>To match an instruction to an OpCode, I iterate through the Vec of Operations.
+On each of these Operations, I check the definition of OperationComponents.
+By iterating through the definition and comparing the equivalent Instruction nibble, I can narrow down the possible instructions.
+With a properly implemented list of Operations, there should only be one matching Operation, and therefore only one matching OpCode.
+I then return this OpCode, which should match the formatting of the current Instruction.
+Next I run different code depending on which OpCode was returned.
+Each of the instructions are documented in my below resources.</p>
+<pre class="rust"><code>    pub fn get_op_code(instruction: &amp;Instruction) -&gt; Option&lt;OpCode&gt;
+    {
+        let operations = Operation::get_operations();
+        let instruction_bits = instruction.get_bits();
+        let matches = operations
+            .iter()
+            .filter(|cur_op| {
+                let mut i = 0usize;
+                for comp in &amp;cur_op.definition
+                {
+                    match comp
+                    {
+                        OperationComponent::Literal(c) =&gt;
+                        {
+                            if instruction_bits[i] != *c
+                            {
+                                return false;
+                            }
+                            i += 1;
+                        }
+                        OperationComponent::Nnn =&gt; i += 3,
+                        OperationComponent::N =&gt; i += 1,
+                        OperationComponent::X =&gt; i += 1,
+                        OperationComponent::Y =&gt; i += 1,
+                        OperationComponent::Kk =&gt; i += 2,
+                    }
+                }
+                true
+            })
+            .map(|f| f.op_code)
+            .collect::&lt;Vec&lt;OpCode&gt;&gt;();
+        matches.first().copied()
+    }</code></pre>
+</div>
+</div>
+<div id="variations-from-the-spec." class="section level3">
+<h3>Variations from the Spec.</h3>
+<p>As stated earlier, there are a few points where my code differs from the spec for the Chip-8.
+This was mostly due to something being either too boring or too time-consuming to implement.
+The first thing that I was too lazy to implement was the sound buzzer.
+It was unnecessary for the gameplay in the target game.
+I suppose it could be added trivially in the countdown thread.
+I’ve never really worked on a project with audio in rust before though… perhaps it would be interesting to work on something with an audio aspect in the upcoming months!
+Something I was unable to complete due to the time constraints I put on this project is the random number generator.
+Now it is set to always return the number four as an homage to the XKCD implementation.
+My original intent was to write an implementation of the XORShift pseudo random number generator algorithm.
+I have previously implemented it in a project written in assembly, and it is quite trivial in implementation!
+I would have implemented this, but I did not have the time or energy to!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="http://devernay.free.fr/hacks/chip8/C8TECH10.HTM" class="uri">http://devernay.free.fr/hacks/chip8/C8TECH10.HTM</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/csharp.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-140778365-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+
