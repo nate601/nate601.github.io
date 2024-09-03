@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Post Mortem: Chip-N8 | nate601&#39;s blag</title>
+<meta property="og:title" content="Post Mortem: Chip-N8 | nate601&#39;s blag" />
+<meta name="twitter:title" content="Post Mortem: Chip-N8 | nate601&#39;s blag" />
+<meta itemprop="name" content="Post Mortem: Chip-N8 | nate601&#39;s blag" />
+<meta name="application-name" content="Post Mortem: Chip-N8 | nate601&#39;s blag" />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="nate601&#39;s blag">
+<meta itemprop="description" content="nate601&#39;s blag" />
+<meta property="og:description" content="nate601&#39;s blag" />
+<meta name="twitter:description" content="nate601&#39;s blag" />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+  <link rel="alternate" hreflang="en" href="/2022/07/23/post-mortem-chip-eight/" title="" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.130.0">
+
+    
+    <meta property="og:url" content="/2022/07/23/post-mortem-chip-eight/">
+  <meta property="og:site_name" content="nate601&#39;s blag">
+  <meta property="og:title" content="Post Mortem: Chip-N8">
+  <meta property="og:description" content="This is the third entry in the monthly programming and blogging challenge that I have created for myself. This month I decided that I would create a chip-8 emulator.
+Chip-8 and Project Scope To quote Cowgod’s technical reference:
+Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. The COSMAC VIP, DREAM 6800, and ETI 660 computers are a few examples.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-07-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-07-23T00:00:00+00:00">
+
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Post Mortem: Chip-N8">
+  <meta name="twitter:description" content="This is the third entry in the monthly programming and blogging challenge that I have created for myself. This month I decided that I would create a chip-8 emulator.
+Chip-8 and Project Scope To quote Cowgod’s technical reference:
+Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. The COSMAC VIP, DREAM 6800, and ETI 660 computers are a few examples.">
+
+
+    
+
+    <link rel="canonical" href="/2022/07/23/post-mortem-chip-eight/">
+    <link href="/style.min.e390ba7da26222f4dc42a349955d76dbbe44e5ce2535a43de5a70633a0a9ec3c.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+  
+
+</head>
+<body data-theme = "" class="notransition">
+
+<script src="/js/theme.min.8961c317c5b88b953fe27525839672c9343f1058ab044696ca225656c8ba2ab0.js" integrity="sha256-iWHDF8W4i5U/4nUlg5ZyyTQ/EFirBEaWyiJWVsi6KrA="></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title></title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/aboutme/">
+                        About Me
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/contact/">
+                        Contact
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="https://github.com/nate601">
+                        GitHub
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Post Mortem: Chip-N8</h1>
+                
+                
+                <div class="post-meta">
+                    <time datetime="2022-07-23T00:00:00&#43;00:00" itemprop="datePublished"> Jul 23, 2022 </time>
+                </div>
+                
+            </header>
+            
+            <div class="page-content">
+                
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>This is the third entry in the monthly programming and blogging challenge that I have created for myself.
+This month I decided that I would create a chip-8 emulator.</p>
+<div id="chip-8-and-project-scope" class="section level3">
+<h3>Chip-8 and Project Scope</h3>
+<p>To quote Cowgod’s technical reference:</p>
+<blockquote>
+<p>Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. The COSMAC VIP, DREAM 6800, and ETI 660 computers are a few examples. These computers typically were designed to use a television as a display, had between 1 and 4K of RAM, and used a 16-key hexadecimal keypad for input. The interpreter took up only 512 bytes of memory, and programs, which were entered into the computer in hexadecimal, were even smaller. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</blockquote>
+<p>I created a chip-8 emulator (not entirely to spec) to play the space invaders rom by David Winter.
+Since I was working extra this month at the district office, I wanted to have a more abbreviated project, so I implemented the emulator within a couple of weekends so that I could be free to relax during the week (this did not happen due to work stress unfortunately.)
+I did successfully create the chip-8 emulator!
+This emulator does play the space invaders rom, but there are several operations that I did not implement.
+For example, the random number generator always returns the number four, and the usual audio cues from the game are silent.</p>
+</div>
+<div id="display-implementation" class="section level3">
+<h3>Display Implementation</h3>
+<p>The chip-8 uses a 64x32 1-bit display, and it is represented in code as an array of bytes.
+Originally, I was going to use the different bits of the byte to represent fading of the pixel, but I decided that it looked stupid, so I removed that.
+When a pixel is written to the display, it is written into a separate “buffer” array before being copied into the actual display.
+This allows the changes to take place on operation boundaries, instead of occurring in the middle of an operation.
+The program loop clears the screen when the buffer is “tainted” and then moves the data from the buffer to the display array.
+Then the display array is mapped to either a white or black emoji depending on the value.
+The mapping is then printed to the screen.
+This was the first time that I had implemented my own Display trait for a struct in Rust, and I find it relatively convoluted compared to overriding virtual functions in C#.
+Coming from a language that is so much more entwined with OOP might be affected the speed at which I learn Rust.</p>
+</div>
+<div id="operations-instructions-opcodes-and-operationcomponents-oh-my" class="section level3">
+<h3>Operations, Instructions, OpCodes, and OperationComponents: Oh my!</h3>
+<p>To parse each Instruction from the binary rom file, I keep a Vec of valid operations. These are defined as being comprised of an array of OperationComponents and an OpCode.
+OpCode is simply an enum listing the different operations (this gives me a way to reference them at compile time).
+OperationComponent is an enum that can have several types representing the bytes in the instruction.
+An OperationComponent is either a Literal (meaning that it represents a hexadecimal nibble), or it can be a variable number of nibbles (up to 3).
+As chip-8 instructions are all two bytes long, there can be no more than four operation components per each Operation.
+An Instruction is the actual instruction that was read from the rom.
+The instruction can then be matched with an Operation.
+The instruction also provides methods that can be used to read the variable nibbles of the instruction.</p>
+<div id="matching-an-instruction-to-an-opcode" class="section level4">
+<h4>Matching an Instruction to an OpCode</h4>
+<p>To match an instruction to an OpCode, I iterate through the Vec of Operations.
+On each of these Operations, I check the definition of OperationComponents.
+By iterating through the definition and comparing the equivalent Instruction nibble, I can narrow down the possible instructions.
+With a properly implemented list of Operations, there should only be one matching Operation, and therefore only one matching OpCode.
+I then return this OpCode, which should match the formatting of the current Instruction.
+Next I run different code depending on which OpCode was returned.
+Each of the instructions are documented in my below resources.</p>
+<pre class="rust"><code>    pub fn get_op_code(instruction: &amp;Instruction) -&gt; Option&lt;OpCode&gt;
+    {
+        let operations = Operation::get_operations();
+        let instruction_bits = instruction.get_bits();
+        let matches = operations
+            .iter()
+            .filter(|cur_op| {
+                let mut i = 0usize;
+                for comp in &amp;cur_op.definition
+                {
+                    match comp
+                    {
+                        OperationComponent::Literal(c) =&gt;
+                        {
+                            if instruction_bits[i] != *c
+                            {
+                                return false;
+                            }
+                            i += 1;
+                        }
+                        OperationComponent::Nnn =&gt; i += 3,
+                        OperationComponent::N =&gt; i += 1,
+                        OperationComponent::X =&gt; i += 1,
+                        OperationComponent::Y =&gt; i += 1,
+                        OperationComponent::Kk =&gt; i += 2,
+                    }
+                }
+                true
+            })
+            .map(|f| f.op_code)
+            .collect::&lt;Vec&lt;OpCode&gt;&gt;();
+        matches.first().copied()
+    }</code></pre>
+</div>
+</div>
+<div id="variations-from-the-spec." class="section level3">
+<h3>Variations from the Spec.</h3>
+<p>As stated earlier, there are a few points where my code differs from the spec for the Chip-8.
+This was mostly due to something being either too boring or too time-consuming to implement.
+The first thing that I was too lazy to implement was the sound buzzer.
+It was unnecessary for the gameplay in the target game.
+I suppose it could be added trivially in the countdown thread.
+I’ve never really worked on a project with audio in rust before though… perhaps it would be interesting to work on something with an audio aspect in the upcoming months!
+Something I was unable to complete due to the time constraints I put on this project is the random number generator.
+Now it is set to always return the number four as an homage to the XKCD implementation.
+My original intent was to write an implementation of the XORShift pseudo random number generator algorithm.
+I have previously implemented it in a project written in assembly, and it is quite trivial in implementation!
+I would have implemented this, but I did not have the time or energy to!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="http://devernay.free.fr/hacks/chip8/C8TECH10.HTM" class="uri">http://devernay.free.fr/hacks/chip8/C8TECH10.HTM</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+</div>
+    <small class="footer_copyright">
+        © 2024 .
+        
+    </small>
+</footer>
+
+
+
+
+
+
+
+    
+    <script src="/js/main.min.4ee188e1744c19816e95a540b2650ed9f033ea0371e74eac8e717355cfca8741.js" integrity="sha256-TuGI4XRMGYFulaVAsmUO2fAz6gNx506sjnFzVc/Kh0E="></script>
+
+    
+
+</body>
+</html>

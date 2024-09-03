@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nate601&#39;s blag</title>
+    <link>/</link>
+    <description>Recent content on nate601&#39;s blag</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Post Mortem: Chip-N8</title>
+      <link>/2022/07/23/post-mortem-chip-eight/</link>
+      <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/07/23/post-mortem-chip-eight/</guid>
+      
+      <description>This is the third entry in the monthly programming and blogging challenge that I have created for myself. This month I decided that I would create a chip-8 emulator.
+Chip-8 and Project Scope To quote Cowgod’s technical reference:
+Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. The COSMAC VIP, DREAM 6800, and ETI 660 computers are a few examples.</description>
+      
+    </item>
+    
+    <item>
+      <title>Post Mortem: Rs-Book-Downloader</title>
+      <link>/2022/06/30/post-mortem-rs-book-downloader-cli/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/06/30/post-mortem-rs-book-downloader-cli/</guid>
+      
+      <description>My Rs-Book-Downloader project was another in a series of programs I have written to help me “acquire” materials in a morally gray way.
+It’s similar to my rapere librum project from a few years ago, but this program sources the books in a different way. Unfortunately, although this project is complete and works in theory, in practice… you might just have an easier time googling for the book. This is due to the time delay that is caused by connecting to the irc server and having them search for the book.</description>
+      
+    </item>
+    
+    <item>
+      <title>Post Mortem: Anime Downloader CLI</title>
+      <link>/2022/05/29/animedownloader-cli-post-mortem/</link>
+      <pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/05/29/animedownloader-cli-post-mortem/</guid>
+      
+      <description>Summary To this day if I had to name one of my most successful projects it would be my Anime downloader. At the time of it’s creation, I did not have a subscription to Funimation or Crunchyroll, so I was streaming anime from various ad and virus ridden websites. If there was a series that I was particularly interested in then I would torrent the whole season and keep it on my media drive (which is a topic for another post.</description>
+      
+    </item>
+    
+    <item>
+      <title>Post Mortem: Dune Head App</title>
+      <link>/2022/01/11/post-mortem-dune-head-app/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/01/11/post-mortem-dune-head-app/</guid>
+      
+      <description>Dune this, dune that. I need some head
+An example of the bot in action
+I firmly believe this project is the brainchild of my sleepless nights and inappropriate internet memes. The dune-head-app project is based on an image macro that I found, disparaging the relatively recent movie release of Dune.
+Thoughts on rust This program was my first attempt at using the rust programming language. There are many things that I like about rust, such as the portability and lack of a need for garbage collection.</description>
+      
+    </item>
+    
+    <item>
+      <title>Contact Me</title>
+      <link>/contact/</link>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      
+      <description>Blog (You are Here)
+Email
+Reddit
+Snapchat
+Instagram
+Twitter</description>
+      
+    </item>
+    
+    <item>
+      <title>Updated Workflow</title>
+      <link>/2020/05/15/updated-workflow/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/15/updated-workflow/</guid>
+      
+      <description>My development environment has once again changed dramatically1, and I would like to record these changes and compare them to other years.
+Operating System and Window Managers For most of my development activities I use a Debian environment. I use a server hosted on DigitalOcean, and SSH into it so that my development environment is consistent no matter which device I am using. Originally, I tried using a window manager such as i3 and dwm, but I have found that, due to speed concerns, using SSH with either Vim splits or tmux panes is preferable.</description>
+      
+    </item>
+    
+    <item>
+      <title>Post Mortem: Rapere Librum</title>
+      <link>/2019/06/22/post-mortem-rapere-librum/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/06/22/post-mortem-rapere-librum/</guid>
+      
+      <description>Mobile development is something that I have attempted once or twice, but I have yet to create anything tbut I have yet to create anything with which I was happy. Development for iOS devices requires a computer running MacOSX, which I have not had in the past. The only computer that I had access to for development could not be updated past OSX High Sierra due to its age, and OSX Mojave is required to install the lastest version of xcode.</description>
+      
+    </item>
+    
+    <item>
+      <title>Terminal Workflow</title>
+      <link>/2019/06/14/terminal-workflow/</link>
+      <pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/06/14/terminal-workflow/</guid>
+      
+      <description>Recently I have made several changes to my terminal workflow, and I feel that it would be useful to document them so that I may analyze any changes that occur in the future.
+Windows Environment I perform most of my activities within a windows environment. I use Cmder as my terminal interface. I have several utilities placed within the Bin folder, allowing access to them without cluttering my PATH. I have the Git for Windows version which gives access to what is essentially the CoreUtils package.</description>
+      
+    </item>
+    
+    <item>
+      <title>Continuing Education</title>
+      <link>/2019/05/25/continuing-education/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/continuing-education/</guid>
+      
+      <description>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE, ## logical.return = TRUE, : there is no package called &amp;#39;plyr&amp;#39; The intent of this document is to provide myself with a way of tracking the status of my progress for me Continuing Education Units (CEs) for the rest of the month of May.
+It is currently 2019/05/25. I must have 20 hours of CEs by the end of this month.</description>
+      
+    </item>
+    
+    <item>
+      <title>Weekly Game Jam 93</title>
+      <link>/2019/04/19/weekly-game-jam-93/</link>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/04/19/weekly-game-jam-93/</guid>
+      
+      <description>Day 1: Day one of WGJ-93 is going fairly well. The theme selected was “fishing.” The game that I have decided to create is a simple non-tactics based game where the player controls a fish hook. This fish hook must dodge things such as jellyfish and driftwood, while still capturing fish. Fish capturing is handled by mousing over the fish for a certain amount of time. The amount of time is determined by the size of the fish (i.</description>
+      
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>/aboutme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/</guid>
+      
+      <description>Introduction Name: Nathan Button, CPhT Contact Information: Contact Me Age: 25 Available times: Evening — Night Profession: Administrative Assistant at Walgreens Sharables 1 Gaming Style — Strategy or 4x mainly, but I&amp;rsquo;ll play whatever my friends are playing Recent Game(s) HighFleet Danganronpa Decadence Recent Anime(s) Mob Psycho 100 Kaguya-sama: Love Is War Recent Song(s) Making a Door Less Open by Car Seat Headrest No Children by The Mountain Goats Hobbies Programming World Building Linguistics In-line Skating &amp;amp; Ice Skating Format courtesy of the /r/Arlington discord server&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

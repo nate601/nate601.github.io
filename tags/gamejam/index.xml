@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GameJam on nate601&#39;s blag</title>
+    <link>/tags/gamejam/</link>
+    <description>Recent content in GameJam on nate601&#39;s blag</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/gamejam/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Weekly Game Jam 93</title>
+      <link>/2019/04/19/weekly-game-jam-93/</link>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/04/19/weekly-game-jam-93/</guid>
+      
+      <description>Day 1: Day one of WGJ-93 is going fairly well. The theme selected was “fishing.” The game that I have decided to create is a simple non-tactics based game where the player controls a fish hook. This fish hook must dodge things such as jellyfish and driftwood, while still capturing fish. Fish capturing is handled by mousing over the fish for a certain amount of time. The amount of time is determined by the size of the fish (i.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

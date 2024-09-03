@@ -1,0 +1,33 @@
+---
+title: 'Post Mortem: Rapere Librum'
+author: Nathan Button
+date: '2019-06-22'
+slug: post-mortem-rapere-librum
+categories: []
+tags: []
+---
+
+Mobile development is something that I have attempted once or twice, but I have yet to create anything tbut I have yet to create anything with which I was happy.  Development for iOS devices requires a computer running MacOSX, which I have not had in the past.  The only computer that I had access to for development could not be updated past OSX High Sierra due to its age, and OSX Mojave is required to install the lastest version of xcode.  Through my University I have obtained a copy of VMware cheaply, and using an unlocker tool that was easily found online[^1] I installed Mojave onto my main development machine.  With this development environment prepared, I now needed a project on which I would work.  I typically use a combination of Libgen and the #bookz irc channel on the undernet server to "obtain" books.  Unfortunately, when I am at a bookstore, accessing these services can be quite difficult.  I decided to create a mobile app that will search these services for a copy of a book, and then provide download links. 
+
+## Rapere Librum Backend
+
+I decided to seperate the user interface of the application and the pdf searching backend, because it would be faster for me to write the parsing code in a language that I was more familiar with.  I also intend to create other frontends for the scraper, including a discord bot and command line interface.  Instead of rewriting the scraping each time that I do this, I believe that hosting one backend for each of these applications is more prudent.  I programmed the backend in csharp using the ScrapySharp library to scrape the web search interface for Libgen.  Although Libgen does have a public api, these apis were intended for backup-maintainers and do not allow searching by ISBN or title.  I use the Google Books API to obtain information about the requested title, and I send this information through the API I created for Libgen.  In the future I hope to create an API that interfaces with the undernet #bookz channel, however in my preliminary testing I was unable to do this.  The process should not entirely be unlike the development for my Anime Downloader, as in that program I also use DCC requests to download files.  The code for the backend and for the anime downloader are available on my github.
+
+### Parsing Method
+
+The ScrapySharp api uses Xpath to search the DOM for html objects.  Using several carefully created Xpath entries, I was able to obtain information relevent to the search results.  The results are sorted in order of best matching, and links that do not lead to an epub file are discarded.  Links that are not direct download are also discarded, as using a torrent or irc connection while mobile is inconvenient or impossible.
+
+## Rapere Librum Frontend
+
+Originally I intended to develop the frontend in React Native, as javascript is a language that I am relatively familar with and the JSX programming style is familar to me through my use of Vue.  In my research around the topic I discovered that Google had released a framework for mobile development called Flutter.  Flutter used a Java-Like language called Dart, and compiled down to native code.  These two reasons convinced me to switch to Flutter for this project.  I installed flutter on my development machine, as well as the virtual machine that I would use to compile the iOS version of the app.  I installed Android Studio onto my development machine, and Xcode onto the virutal machine, as these tools are required by flutter.  I used Visual Studio Code as my text editor of choice for this project, as vim does not yet have a flutter-dart autocompletion engine that I am happy with.  VSC has official integration with the flutter command line tools.  I used the BLoC pattern to control state within the program.
+
+### Application Flow
+
+The application starts at the InitialPage page, which shows the IsbnForm.  On this form the user can either enter an ISBN10/13, or take a picture of an ISBN barcode.  If the user enters an isbn, the application enters the BookLoading state, and shows a circular progress bar to the user.  Two requests are sent to the backend server: the first searches Google Books for information regarding the book, and the second searches Libgen for the title of the book.  If both of these requests return an HTTP 200 result, the application will switch to the BookLoaded page.  Otherwise it will return to the InitialPage and display an error Dialog.  If instead of entering an isbn the user scans a barcode, the application still shows a circular progress bar.  The application will use the firebase machine learning on-device api to scan the barcode.  If there is no barcode detected in the photo, then the application will return to InitialPage and show an error dialog.  If there is one or more barcode detected in the image, the application will take the first barcode seen in the application and use it to complete the previously mentioned requests to the backend.  The BookLoaded page will be displayed in either event, which displays the book title, the author name, the book cover, and the Google Books rating.  Underneath this information, there are buttons linking to the different epub files.  These buttons are named after the location which they link to, which I parse using a simple RegEx.
+
+## Future of Rapere Librum
+
+I intend to create other frontends for the Rapere Librum backend, including a discord bot.  I also intend to extend the backend, allowing it to interface with the #bookz channel.  I will also have to maintain the parsers to keep website format changes from breaking it.  I also intend to add support for eastern literature (e.g. Japanese Light Novels and Manga).  There are several websites that I might scrape for information related to these titles.  Because of how I implemented the LibGen parser, creating more html parsers will not be difficult.  I do not have many expectations for the mobile app frontend, as it will never be accepted into any mainstream app store.  I hope that one of the other frontends that I create will be accessible on mobile, so that my dream of searching for titles on-the-go can be realized.
+
+
+[^1]: Typically, Apple only allows their operating systems to be emulated on legitimate Apple hardware (See [/r/hackintosh](https://www.reddit.com/r/hackintosh))  I obtained my copy of Mojave legitimately so I have no moral qualms using this unlocker.
